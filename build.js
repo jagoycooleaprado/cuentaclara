@@ -13,7 +13,22 @@ fs.mkdirSync(OUT, { recursive: true });
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const stripTags = s => String(s).replace(/<[^>]+>/g, '');
 const hoy = new Date().toISOString().slice(0, 10);
-const favicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a8341f'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3E%24%3C/text%3E%3C/svg%3E";
+const favicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect x='1' y='1' width='26' height='26' rx='8' fill='%2317212b'/%3E%3Cpath d='M8 11h12M8 17h8' stroke='%23f3eee3' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='20.5' cy='17' r='1.9' fill='%23e8b04a'/%3E%3C/svg%3E";
+
+const ic = d => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
+const ICONS = {
+  'sueldo-liquido': ic('<rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5v.01M17.5 14.5v.01"/>'),
+  'finiquito': ic('<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>'),
+  'boleta-de-honorarios': ic('<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8h5M9.5 12h5"/>'),
+  'dividendo-hipotecario': ic('<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/>'),
+  'horas-extras': ic('<circle cx="12" cy="13" r="8"/><path d="M12 8.5V13l3 2M9.5 2.5h5"/>'),
+  'impuesto-unico-segunda-categoria': ic('<rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 9h17M9 9v11M15 9v11"/>'),
+  'comisiones-afp': ic('<path d="M3 20h18M5 20V10M10 20V10M14 20V10M19 20V10M3 10l9-6 9 6"/>'),
+  'uf-a-pesos': ic('<path d="M4 8h13l-3-3M20 16H7l3 3"/>')
+};
+const arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>';
+const logoMark = '<svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="currentColor"/><path d="M8 11h12M8 17h8" stroke="var(--paper)" stroke-width="2.4" stroke-linecap="round"/><circle cx="20.5" cy="17" r="1.9" fill="var(--gold)"/></svg>';
+const lastWordEm = h => { const m = /^(.*\s)(\S+)$/.exec(h); return m ? m[1] + '<em>' + m[2] + '</em>' : h; };
 
 const adsOn = !!cfg.adsense.client;
 const adSlot = name => (adsOn && cfg.adsense.slots[name])
@@ -38,7 +53,9 @@ function layout({ slug, title, desc, body, tool, jsonld = [] }) {
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}">
 <link rel="icon" href="${favicon}">
-<meta name="theme-color" content="#f7f4ee">
+<meta name="theme-color" content="#f3eee3">
+<link rel="preload" href="assets/fonts/serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/sans.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:type" content="website"><meta property="og:locale" content="es_CL">
 <meta property="og:title" content="${esc(fullTitle)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}"><meta property="og:site_name" content="${esc(cfg.siteName)}">
@@ -50,19 +67,19 @@ ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</scri
 </head>
 <body${tool ? ` data-tool="${tool}"` : ''}>
 <header class="site-head"><div class="wrap">
-  <a class="logo" href="index.html">cuenta<span>clara</span></a>
+  <a class="logo" href="index.html">${logoMark}<span>cuenta<em>clara</em></span></a>
   <button id="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
   ${nav(slug).replace('<nav ', '<nav id="menu" ')}
 </div></header>
 ${body}
 <footer class="site-foot"><div class="wrap">
   <div class="cols">
-    <div><strong>${esc(cfg.siteName)}</strong><p>${esc(cfg.tagline)}.</p>
+    <div><a class="logo" href="index.html">${logoMark}<span>cuenta<em>clara</em></span></a><p>${esc(cfg.tagline)}.</p>
     <p>Las cifras son referenciales y no reemplazan la asesoría de un abogado o contador. Datos a ${P.actualizado}.</p></div>
     <div><strong>Calculadoras</strong>${pages.map(p => `<a href="${p.slug}.html">${esc(p.nav)}</a>`).join('')}</div>
-    <div><strong>Información</strong><a href="sobre-nosotros.html">Sobre nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a></div>
+    <div><strong>Información</strong><a href="sobre-nosotros.html">Sobre este sitio</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a></div>
   </div>
-  <p>© ${new Date().getFullYear()} ${esc(cfg.siteName)}</p>
+  <p class="copy">© ${new Date().getFullYear()} ${esc(cfg.siteName)}</p>
 </div></footer>
 <script src="assets/calc-core.js"></script>
 <script src="assets/app.js"></script>
@@ -78,9 +95,10 @@ function toolPage(p) {
     { '@type': 'ListItem', position: 2, name: p.cardTitle, item: `${cfg.domain}/${p.slug}.html` }] };
   const body = `<main><div class="wrap">
   <div class="crumbs"><a href="index.html">Inicio</a> / ${esc(p.cardTitle)}</div>
-  <h1>${p.h1}</h1>
+  <header class="page-head"><span class="kicker">Calculadora · ${cfg.year}</span>
+  <h1>${lastWordEm(p.h1)}</h1>
   <p class="lead">${p.lead}</p>
-  <p class="meta">Cifras al ${P.actualizado}.</p>
+  <p class="meta">Cifras a ${P.actualizado}.</p></header>
   <div class="grid-2">
     <form class="card" id="calc" autocomplete="off" novalidate>${p.form}</form>
     <div class="card" id="resultado" aria-live="polite"><p class="vacio">Completa los datos para ver el resultado.</p></div>
@@ -89,14 +107,27 @@ function toolPage(p) {
   ${affBox(p.aff)}
   <article class="prose">${p.body}</article>
   ${adSlot('middle')}
-  <section class="faq prose" aria-labelledby="faq-h"><h2 id="faq-h">Preguntas frecuentes</h2>
+  <section class="faq prose" aria-labelledby="faq-h"><h2 id="faq-h">Preguntas <em>frecuentes</em></h2>
     ${p.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}
   </section>
   ${adSlot('bottom')}
-  <h2>Otras calculadoras</h2>
+  <h2>Otras <em>calculadoras</em></h2>
   <ul class="related">${related.map(r => `<li><a href="${r.slug}.html">${esc(r.cardTitle)}</a></li>`).join('')}</ul>
 </div></main>`;
   return layout({ slug: p.slug, title: p.title, desc: p.desc, body, tool: p.tool, jsonld: [faqLd, crumbLd] });
+}
+
+function receipt() {
+  const r = CC.sueldoLiquido({ sueldoBase: 1500000, afp: 'Uno', salud: 'fonasa', contrato: 'indefinido', gratificacion: 'legal' });
+  const ln = (t, v, neg) => `<div class="ln${neg ? ' neg' : ''}"><dt>${t}</dt><dd>${neg ? '-' : ''}${CC.clp(v)}</dd></div>`;
+  return `<div class="receipt-wrap"><div class="receipt">
+    <span class="stamp">Ejemplo</span>
+    <h3>Liquidación <small>${cfg.year}</small></h3>
+    <p class="sub">Sueldo base $1.500.000 · AFP Uno · Fonasa</p>
+    <dl>${ln('Sueldo base', r.sueldoBase)}${ln('Gratificación legal', r.gratificacion)}${ln('AFP', r.afp, true)}${ln('Salud 7%', r.salud, true)}${ln('Seguro de cesantía', r.cesantia, true)}${ln('Impuesto único', r.impuesto, true)}</dl>
+    <div class="tot"><span>Líquido a pagar</span><b>${CC.clp(r.liquido)}</b></div>
+    <p class="foot">Calcula la tuya en <a href="sueldo-liquido.html">sueldo bruto a líquido</a>.</p>
+  </div></div>`;
 }
 
 function indexPage() {
@@ -104,22 +135,34 @@ function indexPage() {
   const desc = `Calculadoras gratuitas para Chile: sueldo líquido, finiquito, boleta de honorarios, dividendo hipotecario, horas extras, impuesto único y comisiones AFP. Datos vigentes ${cfg.year}.`;
   const body = `<main><div class="wrap">
   <section class="hero">
-    <h1>Calculadoras de sueldo, finiquito e impuestos para Chile</h1>
-    <p class="lead">Las cuentas que aparecen en una liquidación de sueldo, un finiquito, una boleta de honorarios o un crédito hipotecario, hechas con las cifras de este año.</p>
+    <div>
+      <span class="kicker">Chile · ${cfg.year}</span>
+      <h1>Calculadoras para sueldos, finiquitos e impuestos en <em>Chile</em></h1>
+      <p class="lead">Las cuentas que aparecen en una liquidación de sueldo, un finiquito, una boleta de honorarios o un crédito hipotecario, hechas con las cifras de este año.</p>
+      <div class="btns"><a class="btn" href="sueldo-liquido.html">Calcular mi sueldo líquido ${arrow}</a><a class="btn ghost" href="finiquito.html">Calcular un finiquito</a></div>
+      <div class="ind" aria-label="Indicadores de hoy">
+        <div><small>UF</small><strong data-ind="uf">$${CC.num(P.uf, 2)}</strong></div>
+        <div><small>UTM</small><strong data-ind="utm">${CC.clp(P.utm)}</strong></div>
+        <div><small>Dólar</small><strong data-ind="usd">$${CC.num(P.usd, 2)}</strong></div>
+      </div>
+    </div>
+    ${receipt()}
   </section>
-  <div class="ind" aria-label="Indicadores de hoy">
-    <div><small>UF</small><strong data-ind="uf">$${CC.num(P.uf, 2)}</strong></div>
-    <div><small>UTM</small><strong data-ind="utm">${CC.clp(P.utm)}</strong></div>
-    <div><small>Dólar</small><strong data-ind="usd">$${CC.num(P.usd, 2)}</strong></div>
-    <div><small>Ingreso mínimo</small><strong>${CC.clp(P.sueldoMinimo)}</strong></div>
-  </div>
-  <ul class="cards">${pages.map(p => `<li><a href="${p.slug}.html"><b>${esc(p.cardTitle)}</b><span>${esc(p.cardDesc)}</span></a></li>`).join('')}</ul>
+  <div class="section-title"><h2>Las <em>calculadoras</em></h2><p>Todas gratis y sin registro.</p></div>
+  <ul class="cards">${pages.map(p => `<li><a href="${p.slug}.html"><i class="ic">${ICONS[p.slug]}</i><b>${esc(p.cardTitle)}</b><span class="d">${esc(p.cardDesc)}</span><span class="go">Abrir ${arrow}</span></a></li>`).join('')}</ul>
   ${adSlot('top')}
-  <section class="prose">
-    <h2>Antes de usarlas</h2>
-    <p>Todo se calcula en tu navegador, así que lo que escribes no llega a ningún servidor. La UF, la UTM y el dólar se leen del día; los topes y las tasas anuales se cambian cuando la autoridad los actualiza.</p>
-    <p>Los resultados son estimaciones. Una liquidación o un finiquito reales pueden diferir por redondeos, convenios de la empresa o el valor de la UF que use tu empleador, así que sirven para hacerse una idea y para revisar que lo que te pagan tenga sentido.</p>
-    <p>Cada página explica cómo se hace el cálculo y de dónde salen las cifras.</p>
+  <section class="band">
+    <div>
+      <h2>Cifras oficiales, <em>a la vista</em></h2>
+      <p>Cada página explica cómo se hace el cálculo, de dónde salen los números y a qué fecha están. Todo se calcula en tu navegador: lo que escribes no llega a ningún servidor.</p>
+      <p>Los resultados son estimaciones. Una liquidación o un finiquito reales pueden diferir por redondeos, convenios de la empresa o el valor de la UF que use tu empleador. Sirven para hacerse una idea y para revisar que lo que te pagan tenga sentido.</p>
+    </div>
+    <ul>
+      <li><small>01</small><span>Impuestos y valor de la UTM: <a href="https://www.sii.cl" rel="noopener">Servicio de Impuestos Internos</a></span></li>
+      <li><small>02</small><span>Topes, comisiones y cotizaciones: <a href="https://www.spensiones.cl" rel="noopener">Superintendencia de Pensiones</a></span></li>
+      <li><small>03</small><span>Finiquito y jornada: <a href="https://www.dt.gob.cl" rel="noopener">Dirección del Trabajo</a> y Código del Trabajo</span></li>
+      <li><small>04</small><span>UF y dólar del día: <a href="https://mindicador.cl" rel="noopener">mindicador.cl</a>, con datos del Banco Central</span></li>
+    </ul>
   </section>
 </div></main>`;
   const ld = { '@context': 'https://schema.org', '@type': 'WebSite', name: cfg.siteName, url: cfg.domain + '/', inLanguage: 'es-CL' };
@@ -175,6 +218,7 @@ write('404.html', simplePage('404', 'Página no encontrada', 'La página que bus
 /* Assets */
 fs.mkdirSync(path.join(OUT, 'assets'));
 ['style.css', 'calc-core.js', 'app.js'].forEach(f => fs.copyFileSync(path.join(__dirname, 'assets', f), path.join(OUT, 'assets', f)));
+fs.cpSync(path.join(__dirname, 'assets', 'fonts'), path.join(OUT, 'assets', 'fonts'), { recursive: true });
 
 /* SEO y hosting */
 const urls = ['index', ...pages.map(p => p.slug), 'sobre-nosotros', 'contacto', 'privacidad', 'aviso-legal'];

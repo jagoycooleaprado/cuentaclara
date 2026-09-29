@@ -110,7 +110,7 @@ const pages = [
   /* -------------------------------------------------------------- HONORARIOS */
   {
     slug: 'boleta-de-honorarios', tool: 'honorarios', aff: 'honorarios',
-    nav: 'Boleta de honorarios', cardTitle: 'Boleta de honorarios',
+    nav: 'Honorarios', cardTitle: 'Boleta de honorarios',
     cardDesc: `Retención de ${CC.num(P.retencionHonorarios[2026] * 100, 2)}%: cuánto recibes, o cuánto tienes que emitir.`,
     title: `Calculadora de boleta de honorarios ${Y}: retención 15,25%`,
     desc: `Calcula el monto líquido y la retención de tu boleta de honorarios ${Y} (15,25%). También de líquido a bruto: cuánto emitir para recibir lo que necesitas.`,
@@ -148,7 +148,7 @@ const pages = [
   /* -------------------------------------------------------------- DIVIDENDO */
   {
     slug: 'dividendo-hipotecario', tool: 'dividendo', aff: 'hipotecario',
-    nav: 'Dividendo hipotecario', cardTitle: 'Simulador de dividendo',
+    nav: 'Hipotecario', cardTitle: 'Simulador de dividendo',
     cardDesc: 'La cuota mensual de un crédito hipotecario en UF y pesos, y la renta que te piden.',
     title: `Simulador de crédito hipotecario Chile ${Y}: calcula tu dividendo`,
     desc: `Simula el dividendo de tu crédito hipotecario en UF y pesos: cuota mensual, intereses totales y renta mínima sugerida. Gratis.`,
@@ -274,7 +274,7 @@ const pages = [
   /* -------------------------------------------------------------- UF */
   {
     slug: 'uf-a-pesos', tool: 'uf', aff: 'hipotecario',
-    nav: 'UF, UTM y dólar', cardTitle: 'Conversor UF, UTM y dólar',
+    nav: 'UF y dólar', cardTitle: 'Conversor UF, UTM y dólar',
     cardDesc: 'El valor de hoy de la UF, la UTM y el dólar, y conversión a pesos.',
     title: `Valor UF hoy y conversor de UF a pesos chilenos`,
     desc: `Valor de la UF, la UTM y el dólar hoy en Chile. Convierte UF a pesos, UTM a pesos y dólares a pesos chilenos al instante.`,

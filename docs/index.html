@@ -6,8 +6,10 @@
 <title>CuentaClara: Calculadoras de sueldo, finiquito y honorarios en Chile 2026</title>
 <meta name="description" content="Calculadoras gratuitas para Chile: sueldo líquido, finiquito, boleta de honorarios, dividendo hipotecario, horas extras, impuesto único y comisiones AFP. Datos vigentes 2026.">
 <link rel="canonical" href="https://jagoycooleaprado.github.io/cuentaclara/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a8341f'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3E%24%3C/text%3E%3C/svg%3E">
-<meta name="theme-color" content="#f7f4ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect x='1' y='1' width='26' height='26' rx='8' fill='%2317212b'/%3E%3Cpath d='M8 11h12M8 17h8' stroke='%23f3eee3' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='20.5' cy='17' r='1.9' fill='%23e8b04a'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#f3eee3">
+<link rel="preload" href="assets/fonts/serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/sans.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:type" content="website"><meta property="og:locale" content="es_CL">
 <meta property="og:title" content="CuentaClara: Calculadoras de sueldo, finiquito y honorarios en Chile 2026"><meta property="og:description" content="Calculadoras gratuitas para Chile: sueldo líquido, finiquito, boleta de honorarios, dividendo hipotecario, horas extras, impuesto único y comisiones AFP. Datos vigentes 2026.">
 <meta property="og:url" content="https://jagoycooleaprado.github.io/cuentaclara/"><meta property="og:site_name" content="CuentaClara">
@@ -19,38 +21,57 @@
 </head>
 <body>
 <header class="site-head"><div class="wrap">
-  <a class="logo" href="index.html">cuenta<span>clara</span></a>
+  <a class="logo" href="index.html"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="currentColor"/><path d="M8 11h12M8 17h8" stroke="var(--paper)" stroke-width="2.4" stroke-linecap="round"/><circle cx="20.5" cy="17" r="1.9" fill="var(--gold)"/></svg><span>cuenta<em>clara</em></span></a>
   <button id="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
-  <nav id="menu" class="nav" aria-label="Principal"><a href="sueldo-liquido.html">Sueldo líquido</a><a href="finiquito.html">Finiquito</a><a href="boleta-de-honorarios.html">Boleta de honorarios</a><a href="dividendo-hipotecario.html">Dividendo hipotecario</a><a href="horas-extras.html">Horas extras</a><a href="impuesto-unico-segunda-categoria.html">Impuesto único</a><a href="comisiones-afp.html">Comisiones AFP</a><a href="uf-a-pesos.html">UF, UTM y dólar</a></nav>
+  <nav id="menu" class="nav" aria-label="Principal"><a href="sueldo-liquido.html">Sueldo líquido</a><a href="finiquito.html">Finiquito</a><a href="boleta-de-honorarios.html">Honorarios</a><a href="dividendo-hipotecario.html">Hipotecario</a><a href="horas-extras.html">Horas extras</a><a href="impuesto-unico-segunda-categoria.html">Impuesto único</a><a href="comisiones-afp.html">Comisiones AFP</a><a href="uf-a-pesos.html">UF y dólar</a></nav>
 </div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1>Calculadoras de sueldo, finiquito e impuestos para Chile</h1>
-    <p class="lead">Las cuentas que aparecen en una liquidación de sueldo, un finiquito, una boleta de honorarios o un crédito hipotecario, hechas con las cifras de este año.</p>
+    <div>
+      <span class="kicker">Chile · 2026</span>
+      <h1>Calculadoras para sueldos, finiquitos e impuestos en <em>Chile</em></h1>
+      <p class="lead">Las cuentas que aparecen en una liquidación de sueldo, un finiquito, una boleta de honorarios o un crédito hipotecario, hechas con las cifras de este año.</p>
+      <div class="btns"><a class="btn" href="sueldo-liquido.html">Calcular mi sueldo líquido <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn ghost" href="finiquito.html">Calcular un finiquito</a></div>
+      <div class="ind" aria-label="Indicadores de hoy">
+        <div><small>UF</small><strong data-ind="uf">$41.049,01</strong></div>
+        <div><small>UTM</small><strong data-ind="utm">$71.721</strong></div>
+        <div><small>Dólar</small><strong data-ind="usd">$969,70</strong></div>
+      </div>
+    </div>
+    <div class="receipt-wrap"><div class="receipt">
+    <span class="stamp">Ejemplo</span>
+    <h3>Liquidación <small>2026</small></h3>
+    <p class="sub">Sueldo base $1.500.000 · AFP Uno · Fonasa</p>
+    <dl><div class="ln"><dt>Sueldo base</dt><dd>$1.500.000</dd></div><div class="ln"><dt>Gratificación legal</dt><dd>$219.115</dd></div><div class="ln neg"><dt>AFP</dt><dd>-$179.819</dd></div><div class="ln neg"><dt>Salud 7%</dt><dd>-$120.338</dd></div><div class="ln neg"><dt>Seguro de cesantía</dt><dd>-$10.315</dd></div><div class="ln neg"><dt>Impuesto único</dt><dd>-$17.616</dd></div></dl>
+    <div class="tot"><span>Líquido a pagar</span><b>$1.391.027</b></div>
+    <p class="foot">Calcula la tuya en <a href="sueldo-liquido.html">sueldo bruto a líquido</a>.</p>
+  </div></div>
   </section>
-  <div class="ind" aria-label="Indicadores de hoy">
-    <div><small>UF</small><strong data-ind="uf">$41.049,01</strong></div>
-    <div><small>UTM</small><strong data-ind="utm">$71.721</strong></div>
-    <div><small>Dólar</small><strong data-ind="usd">$969,70</strong></div>
-    <div><small>Ingreso mínimo</small><strong>$553.553</strong></div>
-  </div>
-  <ul class="cards"><li><a href="sueldo-liquido.html"><b>Sueldo bruto a líquido</b><span>Cuánto te llega después de AFP, salud, cesantía e impuesto. Sirve también al revés.</span></a></li><li><a href="finiquito.html"><b>Calculadora de finiquito</b><span>Indemnización por años de servicio, aviso previo, vacaciones y días pendientes.</span></a></li><li><a href="boleta-de-honorarios.html"><b>Boleta de honorarios</b><span>Retención de 15,25%: cuánto recibes, o cuánto tienes que emitir.</span></a></li><li><a href="dividendo-hipotecario.html"><b>Simulador de dividendo</b><span>La cuota mensual de un crédito hipotecario en UF y pesos, y la renta que te piden.</span></a></li><li><a href="horas-extras.html"><b>Calculadora de horas extras</b><span>Valor de la hora ordinaria y de la extra, con la jornada de 42 horas.</span></a></li><li><a href="impuesto-unico-segunda-categoria.html"><b>Impuesto único de segunda categoría</b><span>La tabla del mes en pesos, según la UTM, y una calculadora para tu sueldo.</span></a></li><li><a href="comisiones-afp.html"><b>Comisiones de las AFP</b><span>Cuánto te cobra cada AFP según tu sueldo y cuánto ahorrarías al año.</span></a></li><li><a href="uf-a-pesos.html"><b>Conversor UF, UTM y dólar</b><span>El valor de hoy de la UF, la UTM y el dólar, y conversión a pesos.</span></a></li></ul>
+  <div class="section-title"><h2>Las <em>calculadoras</em></h2><p>Todas gratis y sin registro.</p></div>
+  <ul class="cards"><li><a href="sueldo-liquido.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5v.01M17.5 14.5v.01"/></svg></i><b>Sueldo bruto a líquido</b><span class="d">Cuánto te llega después de AFP, salud, cesantía e impuesto. Sirve también al revés.</span><span class="go">Abrir <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></li><li><a href="finiquito.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></i><b>Calculadora de finiquito</b><span class="d">Indemnización por años de servicio, aviso previo, vacaciones y días pendientes.</span><span class="go">Abrir <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></li><li><a href="boleta-de-honorarios.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8h5M9.5 12h5"/></svg></i><b>Boleta de honorarios</b><span class="d">Retención de 15,25%: cuánto recibes, o cuánto tienes que emitir.</span><span class="go">Abrir <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></li><li><a href="dividendo-hipotecario.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg></i><b>Simulador de dividendo</b><span class="d">La cuota mensual de un crédito hipotecario en UF y pesos, y la renta que te piden.</span><span class="go">Abrir <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></li><li><a href="horas-extras.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 8.5V13l3 2M9.5 2.5h5"/></svg></i><b>Calculadora de horas extras</b><span class="d">Valor de la hora ordinaria y de la extra, con la jornada de 42 horas.</span><span class="go">Abrir <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></li><li><a href="impuesto-unico-segunda-categoria.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 9h17M9 9v11M15 9v11"/></svg></i><b>Impuesto único de segunda categoría</b><span class="d">La tabla del mes en pesos, según la UTM, y una calculadora para tu sueldo.</span><span class="go">Abrir <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></li><li><a href="comisiones-afp.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M5 20V10M10 20V10M14 20V10M19 20V10M3 10l9-6 9 6"/></svg></i><b>Comisiones de las AFP</b><span class="d">Cuánto te cobra cada AFP según tu sueldo y cuánto ahorrarías al año.</span><span class="go">Abrir <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></li><li><a href="uf-a-pesos.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg></i><b>Conversor UF, UTM y dólar</b><span class="d">El valor de hoy de la UF, la UTM y el dólar, y conversión a pesos.</span><span class="go">Abrir <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></li></ul>
   
-  <section class="prose">
-    <h2>Antes de usarlas</h2>
-    <p>Todo se calcula en tu navegador, así que lo que escribes no llega a ningún servidor. La UF, la UTM y el dólar se leen del día; los topes y las tasas anuales se cambian cuando la autoridad los actualiza.</p>
-    <p>Los resultados son estimaciones. Una liquidación o un finiquito reales pueden diferir por redondeos, convenios de la empresa o el valor de la UF que use tu empleador, así que sirven para hacerse una idea y para revisar que lo que te pagan tenga sentido.</p>
-    <p>Cada página explica cómo se hace el cálculo y de dónde salen las cifras.</p>
+  <section class="band">
+    <div>
+      <h2>Cifras oficiales, <em>a la vista</em></h2>
+      <p>Cada página explica cómo se hace el cálculo, de dónde salen los números y a qué fecha están. Todo se calcula en tu navegador: lo que escribes no llega a ningún servidor.</p>
+      <p>Los resultados son estimaciones. Una liquidación o un finiquito reales pueden diferir por redondeos, convenios de la empresa o el valor de la UF que use tu empleador. Sirven para hacerse una idea y para revisar que lo que te pagan tenga sentido.</p>
+    </div>
+    <ul>
+      <li><small>01</small><span>Impuestos y valor de la UTM: <a href="https://www.sii.cl" rel="noopener">Servicio de Impuestos Internos</a></span></li>
+      <li><small>02</small><span>Topes, comisiones y cotizaciones: <a href="https://www.spensiones.cl" rel="noopener">Superintendencia de Pensiones</a></span></li>
+      <li><small>03</small><span>Finiquito y jornada: <a href="https://www.dt.gob.cl" rel="noopener">Dirección del Trabajo</a> y Código del Trabajo</span></li>
+      <li><small>04</small><span>UF y dólar del día: <a href="https://mindicador.cl" rel="noopener">mindicador.cl</a>, con datos del Banco Central</span></li>
+    </ul>
   </section>
 </div></main>
 <footer class="site-foot"><div class="wrap">
   <div class="cols">
-    <div><strong>CuentaClara</strong><p>Calculadoras de sueldo, finiquito y finanzas para Chile.</p>
+    <div><a class="logo" href="index.html"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="currentColor"/><path d="M8 11h12M8 17h8" stroke="var(--paper)" stroke-width="2.4" stroke-linecap="round"/><circle cx="20.5" cy="17" r="1.9" fill="var(--gold)"/></svg><span>cuenta<em>clara</em></span></a><p>Calculadoras de sueldo, finiquito y finanzas para Chile.</p>
     <p>Las cifras son referenciales y no reemplazan la asesoría de un abogado o contador. Datos a septiembre de 2026.</p></div>
-    <div><strong>Calculadoras</strong><a href="sueldo-liquido.html">Sueldo líquido</a><a href="finiquito.html">Finiquito</a><a href="boleta-de-honorarios.html">Boleta de honorarios</a><a href="dividendo-hipotecario.html">Dividendo hipotecario</a><a href="horas-extras.html">Horas extras</a><a href="impuesto-unico-segunda-categoria.html">Impuesto único</a><a href="comisiones-afp.html">Comisiones AFP</a><a href="uf-a-pesos.html">UF, UTM y dólar</a></div>
-    <div><strong>Información</strong><a href="sobre-nosotros.html">Sobre nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a></div>
+    <div><strong>Calculadoras</strong><a href="sueldo-liquido.html">Sueldo líquido</a><a href="finiquito.html">Finiquito</a><a href="boleta-de-honorarios.html">Honorarios</a><a href="dividendo-hipotecario.html">Hipotecario</a><a href="horas-extras.html">Horas extras</a><a href="impuesto-unico-segunda-categoria.html">Impuesto único</a><a href="comisiones-afp.html">Comisiones AFP</a><a href="uf-a-pesos.html">UF y dólar</a></div>
+    <div><strong>Información</strong><a href="sobre-nosotros.html">Sobre este sitio</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a></div>
   </div>
-  <p>© 2026 CuentaClara</p>
+  <p class="copy">© 2026 CuentaClara</p>
 </div></footer>
 <script src="assets/calc-core.js"></script>
 <script src="assets/app.js"></script>

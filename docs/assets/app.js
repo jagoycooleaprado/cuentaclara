@@ -17,7 +17,29 @@
   function row(label, value, cls, hint) {
     return '<tr' + (cls ? ' class="' + cls + '"' : '') + '><th scope="row">' + label + (hint ? '<small>' + hint + '</small>' : '') + '</th><td>' + value + '</td></tr>';
   }
-  function out(html) { var el = $('#resultado'); if (el) el.innerHTML = html; }
+  var lastVals = {};
+  function out(html) {
+    var el = $('#resultado'); if (!el) return;
+    el.classList.toggle('enter', !el.querySelector('.big'));
+    el.innerHTML = html;
+    countUp(el);
+  }
+  function countUp(el) {
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    $$('.big strong', el).forEach(function (s, i) {
+      var m = /^(-?)\$([\d.]+)$/.exec(s.textContent);
+      if (!m) return;
+      var to = parseInt(m[2].replace(/\./g, ''), 10) * (m[1] ? -1 : 1), from = lastVals[i];
+      lastVals[i] = to;
+      if (from == null || from === to) return;
+      var t0 = performance.now();
+      (function step(t) {
+        var p = Math.min(1, (t - t0) / 380), e = 1 - Math.pow(1 - p, 3);
+        s.textContent = CC.clp(from + (to - from) * e);
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+  }
 
   /* Campos de dinero con separador de miles */
   function bindMoney() {
