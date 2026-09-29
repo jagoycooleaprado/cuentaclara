@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jagoycooleaprado.github.io/cuentaclara/sitemap.xml

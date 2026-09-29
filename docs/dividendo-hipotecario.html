@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulador de crédito hipotecario Chile 2026: calcula tu dividendo | CuentaClara</title>
+<meta name="description" content="Simula el dividendo de tu crédito hipotecario en UF y pesos: cuota mensual, intereses totales y renta mínima sugerida. Gratis, sin dejar tus datos.">
+<link rel="canonical" href="https://jagoycooleaprado.github.io/cuentaclara/dividendo-hipotecario.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d6b4f'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3E%24%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0d6b4f">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_CL">
+<meta property="og:title" content="Simulador de crédito hipotecario Chile 2026: calcula tu dividendo | CuentaClara"><meta property="og:description" content="Simula el dividendo de tu crédito hipotecario en UF y pesos: cuota mensual, intereses totales y renta mínima sugerida. Gratis, sin dejar tus datos.">
+<meta property="og:url" content="https://jagoycooleaprado.github.io/cuentaclara/dividendo-hipotecario.html"><meta property="og:site_name" content="CuentaClara">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/style.css">
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto es el dividendo de una propiedad de 3.000 UF a 30 años?","acceptedAnswer":{"@type":"Answer","text":"Con 20% de pie (crédito de 2.400 UF) y una tasa de 4,5% anual, la cuota es cercana a 12,2 UF al mes, sin seguros. Usa el simulador para ajustarlo a tu caso."}},{"@type":"Question","name":"¿Qué es mejor: 20 o 30 años?","acceptedAnswer":{"@type":"Answer","text":"A 20 años pagas una cuota más alta pero muchos menos intereses. A 30 años la cuota baja, pero pagas bastante más en total. Puedes elegir 30 años y prepagar cuando puedas."}},{"@type":"Question","name":"¿Qué pasa si sube la UF?","acceptedAnswer":{"@type":"Answer","text":"Tu cuota en UF se mantiene, pero en pesos aumenta con la inflación. Por eso conviene que tu renta también se reajuste."}},{"@type":"Question","name":"¿Puedo pagar el crédito antes de tiempo?","acceptedAnswer":{"@type":"Answer","text":"Sí. Las amortizaciones extraordinarias y el prepago están permitidos por ley, aunque el banco puede cobrar una comisión limitada. Consulta las condiciones antes de firmar."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://jagoycooleaprado.github.io/cuentaclara/"},{"@type":"ListItem","position":2,"name":"Simulador de dividendo","item":"https://jagoycooleaprado.github.io/cuentaclara/dividendo-hipotecario.html"}]}</script>
+</head>
+<body data-tool="dividendo">
+<header class="site-head"><div class="wrap">
+  <a class="logo" href="index.html"><i>$</i><span>Cuenta<b>Clara</b></span></a>
+  <button id="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
+  <nav id="menu" class="nav" aria-label="Principal"><a href="sueldo-liquido.html">Sueldo líquido</a><a href="finiquito.html">Finiquito</a><a href="boleta-de-honorarios.html">Boleta de honorarios</a><a href="dividendo-hipotecario.html" aria-current="page">Dividendo hipotecario</a><a href="horas-extras.html">Horas extras</a><a href="impuesto-unico-segunda-categoria.html">Impuesto único</a><a href="comisiones-afp.html">Comisiones AFP</a><a href="uf-a-pesos.html">UF, UTM y dólar</a></nav>
+</div></header>
+<main><div class="wrap">
+  <div class="crumbs"><a href="index.html">Inicio</a> › Simulador de dividendo</div>
+  <h1>Simulador de dividendo hipotecario</h1>
+  <p class="lead">Calcula cuánto pagarías al mes por tu crédito hipotecario, cuánto pagarás en intereses y qué renta necesitas para que te lo aprueben.</p>
+  <div class="grid-2">
+    <form class="card" id="calc" autocomplete="off" novalidate>
+      <div class="field"><label for="d-valor">Valor de la propiedad (UF)</label><input id="d-valor" type="number" inputmode="decimal" step="any" value="3500" min="0"></div><p class="updated" id="d-valor-clp" style="margin:-8px 0 14px"></p>
+      <div class="two"><div class="field"><label for="d-pie">Pie (%)</label><input id="d-pie" type="number" inputmode="decimal" step="any" value="20" min="0"><small>Lo habitual es 20%</small></div><div class="field"><label for="d-plazo">Plazo (años)</label><input id="d-plazo" type="number" inputmode="decimal" step="1" value="30" min="0"></div></div>
+      <div class="two"><div class="field"><label for="d-tasa">Tasa anual (%)</label><input id="d-tasa" type="number" inputmode="decimal" step="0.01" value="4.5" min="0"><small>Tasa del crédito</small></div><div class="field"><label for="d-seg">Seguros (% anual)</label><input id="d-seg" type="number" inputmode="decimal" step="0.01" value="0.3" min="0"><small>Desgravamen e incendio (estimado)</small></div></div></form>
+    <div class="card" id="resultado" aria-live="polite"><p class="vacio">Completa los datos para ver el resultado.</p></div>
+  </div>
+  
+  
+  <article class="prose">
+      <h2>Cómo funciona un crédito hipotecario en Chile</h2>
+      <p>Casi todos los créditos hipotecarios en Chile se pactan en <strong>UF</strong>, con cuotas fijas (sistema francés). Eso significa que tu dividendo en UF no cambia durante todo el crédito, pero en pesos sube o baja según la inflación, porque el valor de la UF se reajusta a diario.</p>
+      <p>La cuota se calcula con la fórmula: <code>cuota = crédito × i ÷ (1 − (1 + i)^−n)</code>, donde <em>i</em> es la tasa mensual y <em>n</em> el número de cuotas.</p>
+      <h2>Qué mirar además de la tasa</h2>
+      <ul>
+        <li><strong>CAE (Carga Anual Equivalente):</strong> incluye tasa, seguros y gastos. Es el indicador correcto para comparar bancos.</li>
+        <li><strong>Pie:</strong> lo habitual es que el banco financie hasta el 80% del valor de la propiedad. Con pie menor, la tasa suele ser más alta.</li>
+        <li><strong>Gastos operacionales:</strong> tasación, estudio de títulos, notaría, impuesto de timbres y estampillas e inscripción en el Conservador de Bienes Raíces. Suelen sumar entre 1% y 2% del valor.</li>
+        <li><strong>Plazo:</strong> más años bajan la cuota, pero aumentan mucho los intereses totales. Compara 20, 25 y 30 años en el simulador.</li>
+      </ul>
+      <h2>¿Qué renta necesitas?</h2>
+      <p>Los bancos suelen exigir que el dividendo no supere entre el 25% y el 30% de la renta líquida del hogar. Por eso el simulador te muestra una renta mínima sugerida asumiendo el 25%. Cada banco aplica su propia política de riesgo, así que úsalo como guía.</p>
+      <p class="updated">La simulación es referencial: usa tasa nominal anual dividida en 12 y los seguros como porcentaje anual del crédito. Los valores finales los define la oferta formal del banco.</p></article>
+  
+  <section class="faq prose" aria-labelledby="faq-h"><h2 id="faq-h">Preguntas frecuentes</h2>
+    <details><summary>¿Cuánto es el dividendo de una propiedad de 3.000 UF a 30 años?</summary><p>Con 20% de pie (crédito de 2.400 UF) y una tasa de 4,5% anual, la cuota es cercana a 12,2 UF al mes, sin seguros. Usa el simulador para ajustarlo a tu caso.</p></details><details><summary>¿Qué es mejor: 20 o 30 años?</summary><p>A 20 años pagas una cuota más alta pero muchos menos intereses. A 30 años la cuota baja, pero pagas bastante más en total. Puedes elegir 30 años y prepagar cuando puedas.</p></details><details><summary>¿Qué pasa si sube la UF?</summary><p>Tu cuota en UF se mantiene, pero en pesos aumenta con la inflación. Por eso conviene que tu renta también se reajuste.</p></details><details><summary>¿Puedo pagar el crédito antes de tiempo?</summary><p>Sí. Las amortizaciones extraordinarias y el prepago están permitidos por ley, aunque el banco puede cobrar una comisión limitada. Consulta las condiciones antes de firmar.</p></details>
+  </section>
+  
+  <h2>Otras calculadoras</h2>
+  <ul class="related"><li><a href="uf-a-pesos.html">🔁 Conversor UF, UTM y dólar</a></li><li><a href="sueldo-liquido.html">💵 Sueldo bruto a líquido</a></li><li><a href="impuesto-unico-segunda-categoria.html">📊 Impuesto único de segunda categoría</a></li></ul>
+</div></main>
+<footer class="site-foot"><div class="wrap">
+  <div class="cols">
+    <div><strong>CuentaClara</strong><p>Calculadoras de sueldo, finiquito y finanzas para Chile. Parámetros vigentes a septiembre de 2026.</p>
+    <p>Las calculadoras entregan estimaciones referenciales y no constituyen asesoría legal, tributaria ni financiera.</p></div>
+    <div><strong>Calculadoras</strong><a href="sueldo-liquido.html">Sueldo líquido</a><a href="finiquito.html">Finiquito</a><a href="boleta-de-honorarios.html">Boleta de honorarios</a><a href="dividendo-hipotecario.html">Dividendo hipotecario</a><a href="horas-extras.html">Horas extras</a><a href="impuesto-unico-segunda-categoria.html">Impuesto único</a><a href="comisiones-afp.html">Comisiones AFP</a><a href="uf-a-pesos.html">UF, UTM y dólar</a></div>
+    <div><strong>Información</strong><a href="sobre-nosotros.html">Sobre nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a></div>
+  </div>
+  <p>© 2026 CuentaClara. Hecho en Chile.</p>
+</div></footer>
+<script src="assets/calc-core.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
