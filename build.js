@@ -13,7 +13,7 @@ fs.mkdirSync(OUT, { recursive: true });
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const stripTags = s => String(s).replace(/<[^>]+>/g, '');
 const hoy = new Date().toISOString().slice(0, 10);
-const favicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d6b4f'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3E%24%3C/text%3E%3C/svg%3E";
+const favicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a8341f'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3E%24%3C/text%3E%3C/svg%3E";
 
 const adsOn = !!cfg.adsense.client;
 const adSlot = name => (adsOn && cfg.adsense.slots[name])
@@ -38,7 +38,7 @@ function layout({ slug, title, desc, body, tool, jsonld = [] }) {
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}">
 <link rel="icon" href="${favicon}">
-<meta name="theme-color" content="#0d6b4f">
+<meta name="theme-color" content="#f7f4ee">
 <meta property="og:type" content="website"><meta property="og:locale" content="es_CL">
 <meta property="og:title" content="${esc(fullTitle)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}"><meta property="og:site_name" content="${esc(cfg.siteName)}">
@@ -50,19 +50,19 @@ ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</scri
 </head>
 <body${tool ? ` data-tool="${tool}"` : ''}>
 <header class="site-head"><div class="wrap">
-  <a class="logo" href="index.html"><i>$</i><span>Cuenta<b>Clara</b></span></a>
+  <a class="logo" href="index.html">cuenta<span>clara</span></a>
   <button id="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
   ${nav(slug).replace('<nav ', '<nav id="menu" ')}
 </div></header>
 ${body}
 <footer class="site-foot"><div class="wrap">
   <div class="cols">
-    <div><strong>${esc(cfg.siteName)}</strong><p>${esc(cfg.tagline)}. Parámetros vigentes a ${P.actualizado}.</p>
-    <p>Las calculadoras entregan estimaciones referenciales y no constituyen asesoría legal, tributaria ni financiera.</p></div>
+    <div><strong>${esc(cfg.siteName)}</strong><p>${esc(cfg.tagline)}.</p>
+    <p>Las cifras son referenciales y no reemplazan la asesoría de un abogado o contador. Datos a ${P.actualizado}.</p></div>
     <div><strong>Calculadoras</strong>${pages.map(p => `<a href="${p.slug}.html">${esc(p.nav)}</a>`).join('')}</div>
     <div><strong>Información</strong><a href="sobre-nosotros.html">Sobre nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a></div>
   </div>
-  <p>© ${new Date().getFullYear()} ${esc(cfg.siteName)}. Hecho en Chile.</p>
+  <p>© ${new Date().getFullYear()} ${esc(cfg.siteName)}</p>
 </div></footer>
 <script src="assets/calc-core.js"></script>
 <script src="assets/app.js"></script>
@@ -77,9 +77,10 @@ function toolPage(p) {
     { '@type': 'ListItem', position: 1, name: 'Inicio', item: cfg.domain + '/' },
     { '@type': 'ListItem', position: 2, name: p.cardTitle, item: `${cfg.domain}/${p.slug}.html` }] };
   const body = `<main><div class="wrap">
-  <div class="crumbs"><a href="index.html">Inicio</a> › ${esc(p.cardTitle)}</div>
+  <div class="crumbs"><a href="index.html">Inicio</a> / ${esc(p.cardTitle)}</div>
   <h1>${p.h1}</h1>
   <p class="lead">${p.lead}</p>
+  <p class="meta">Cifras al ${P.actualizado}.</p>
   <div class="grid-2">
     <form class="card" id="calc" autocomplete="off" novalidate>${p.form}</form>
     <div class="card" id="resultado" aria-live="polite"><p class="vacio">Completa los datos para ver el resultado.</p></div>
@@ -93,7 +94,7 @@ function toolPage(p) {
   </section>
   ${adSlot('bottom')}
   <h2>Otras calculadoras</h2>
-  <ul class="related">${related.map(r => `<li><a href="${r.slug}.html">${esc(r.icon + ' ' + r.cardTitle)}</a></li>`).join('')}</ul>
+  <ul class="related">${related.map(r => `<li><a href="${r.slug}.html">${esc(r.cardTitle)}</a></li>`).join('')}</ul>
 </div></main>`;
   return layout({ slug: p.slug, title: p.title, desc: p.desc, body, tool: p.tool, jsonld: [faqLd, crumbLd] });
 }
@@ -103,8 +104,8 @@ function indexPage() {
   const desc = `Calculadoras gratuitas para Chile: sueldo líquido, finiquito, boleta de honorarios, dividendo hipotecario, horas extras, impuesto único y comisiones AFP. Datos vigentes ${cfg.year}.`;
   const body = `<main><div class="wrap">
   <section class="hero">
-    <h1>Tus cuentas, claras y al día.</h1>
-    <p class="lead">Calculadoras gratuitas con las cifras vigentes en Chile ${cfg.year}: sueldo líquido, finiquito, honorarios, créditos hipotecarios y más. Sin registro y sin dejar tus datos.</p>
+    <h1>Calculadoras de sueldo, finiquito e impuestos para Chile</h1>
+    <p class="lead">Las cuentas que aparecen en una liquidación de sueldo, un finiquito, una boleta de honorarios o un crédito hipotecario, hechas con las cifras de este año.</p>
   </section>
   <div class="ind" aria-label="Indicadores de hoy">
     <div><small>UF</small><strong data-ind="uf">$${CC.num(P.uf, 2)}</strong></div>
@@ -112,21 +113,13 @@ function indexPage() {
     <div><small>Dólar</small><strong data-ind="usd">$${CC.num(P.usd, 2)}</strong></div>
     <div><small>Ingreso mínimo</small><strong>${CC.clp(P.sueldoMinimo)}</strong></div>
   </div>
-  <ul class="cards">${pages.map(p => `<li><a href="${p.slug}.html"><span class="ico">${p.icon}</span><b>${esc(p.cardTitle)}</b><span>${esc(p.cardDesc)}</span></a></li>`).join('')}</ul>
+  <ul class="cards">${pages.map(p => `<li><a href="${p.slug}.html"><b>${esc(p.cardTitle)}</b><span>${esc(p.cardDesc)}</span></a></li>`).join('')}</ul>
   ${adSlot('top')}
   <section class="prose">
-    <h2>Por qué usar ${esc(cfg.siteName)}</h2>
-    <ul>
-      <li><strong>Cifras oficiales y vigentes:</strong> topes, tasas y tramos según el SII, la Superintendencia de Pensiones y la Dirección del Trabajo, con la UF y la UTM del día.</li>
-      <li><strong>Explicado en simple:</strong> cada calculadora incluye cómo se hace el cálculo, para que entiendas el resultado y no solo el número.</li>
-      <li><strong>Privado:</strong> todo se calcula en tu navegador. No guardamos los montos que ingresas.</li>
-    </ul>
-    <h2>Preguntas frecuentes</h2>
-  </section>
-  <section class="faq prose">
-    <details><summary>¿Los resultados son exactos?</summary><p>Son estimaciones que usan la normativa vigente. Tu liquidación, tu finiquito o la oferta del banco pueden variar por redondeos, convenios o condiciones particulares. Úsalas como referencia para planificar.</p></details>
-    <details><summary>¿Cada cuánto se actualizan los parámetros?</summary><p>La UF, la UTM y el dólar se cargan en línea cada vez que abres una calculadora. Los topes y tasas anuales se revisan cada vez que la autoridad publica cambios.</p></details>
-    <details><summary>¿Cuesta algo usarlas?</summary><p>No. Todas las calculadoras son gratuitas. El sitio se financia con publicidad y con enlaces de afiliados claramente identificados.</p></details>
+    <h2>Antes de usarlas</h2>
+    <p>Todo se calcula en tu navegador, así que lo que escribes no llega a ningún servidor. La UF, la UTM y el dólar se leen del día; los topes y las tasas anuales se cambian cuando la autoridad los actualiza.</p>
+    <p>Los resultados son estimaciones. Una liquidación o un finiquito reales pueden diferir por redondeos, convenios de la empresa o el valor de la UF que use tu empleador, así que sirven para hacerse una idea y para revisar que lo que te pagan tenga sentido.</p>
+    <p>Cada página explica cómo se hace el cálculo y de dónde salen las cifras.</p>
   </section>
 </div></main>`;
   const ld = { '@context': 'https://schema.org', '@type': 'WebSite', name: cfg.siteName, url: cfg.domain + '/', inLanguage: 'es-CL' };
@@ -134,7 +127,7 @@ function indexPage() {
 }
 
 function simplePage(slug, title, desc, inner) {
-  const body = `<main><div class="wrap"><div class="crumbs"><a href="index.html">Inicio</a> › ${esc(title)}</div><h1>${esc(title)}</h1><div class="prose">${inner}</div></div></main>`;
+  const body = `<main><div class="wrap"><div class="crumbs"><a href="index.html">Inicio</a> / ${esc(title)}</div><h1>${esc(title)}</h1><div class="prose">${inner}</div></div></main>`;
   return layout({ slug, title, desc, body });
 }
 
@@ -143,18 +136,14 @@ const write = (name, content) => fs.writeFileSync(path.join(OUT, name), content)
 write('index.html', indexPage());
 pages.forEach(p => write(p.slug + '.html', toolPage(p)));
 
-write('sobre-nosotros.html', simplePage('sobre-nosotros', 'Sobre nosotros', `Quiénes somos y cómo calculamos los resultados de ${cfg.siteName}.`, `
-  <p>${esc(cfg.siteName)} nace para que cualquier persona en Chile pueda entender sus cuentas laborales y financieras sin depender de planillas ni de fórmulas que nadie explica.</p>
-  <h2>Cómo hacemos los cálculos</h2>
-  <p>Usamos la normativa vigente publicada por el Servicio de Impuestos Internos (SII), la Superintendencia de Pensiones, la Dirección del Trabajo y el Código del Trabajo. Los valores de la UF, la UTM y el dólar se consultan en línea a través de mindicador.cl.</p>
-  <h2>Nuestro compromiso</h2>
-  <ul><li>Explicar cada cálculo de forma simple.</li><li>Mantener los parámetros actualizados y señalar la fecha de vigencia.</li><li>No pedir registro ni guardar los datos que ingresas.</li></ul>
-  <p>¿Encontraste un error o una cifra desactualizada? Escríbenos desde la página de <a href="contacto.html">contacto</a>.</p>`));
+write('sobre-nosotros.html', simplePage('sobre-nosotros', 'Sobre este sitio', `Qué es ${cfg.siteName}, de dónde salen las cifras y cómo avisar de un error.`, `
+  <p>${esc(cfg.siteName)} es un sitio pequeño con calculadoras para cuentas que casi todos en Chile tenemos que hacer alguna vez y que pocas veces están bien explicadas: cuánto queda de un sueldo, cuánto corresponde de finiquito, cuánto retienen de una boleta de honorarios, cuánto sería el dividendo de una casa.</p>
+  <p>Las cifras salen de fuentes oficiales: el Servicio de Impuestos Internos, la Superintendencia de Pensiones, la Dirección del Trabajo y el Código del Trabajo. La UF, la UTM y el dólar se leen en línea desde mindicador.cl. Cada página indica a qué fecha están los datos.</p>
+  <p>Si encuentras un error o una cifra desactualizada, cuéntalo en la página de <a href="contacto.html">contacto</a> y se corrige.</p>`));
 
-write('contacto.html', simplePage('contacto', 'Contacto', `Escríbenos para reportar errores, sugerir calculadoras o consultar por publicidad en ${cfg.siteName}.`, `
-  <p>${cfg.contactEmail ? `Puedes escribirnos a <a href="mailto:${esc(cfg.contactEmail)}">${esc(cfg.contactEmail)}</a>. Leemos todos los mensajes.` : 'Estamos habilitando nuestro canal de contacto. Mientras tanto, puedes usar los enlaces oficiales de abajo para consultas individuales.'}</p>
-  <ul><li>Reporte de errores o cifras desactualizadas.</li><li>Sugerencias de nuevas calculadoras.</li><li>Publicidad y alianzas comerciales.</li></ul>
-  <p>No podemos responder consultas legales o tributarias individuales. Para eso te recomendamos acudir a la <a href="https://www.dt.gob.cl" rel="noopener">Dirección del Trabajo</a>, al <a href="https://www.sii.cl" rel="noopener">SII</a> o a un profesional.</p>`));
+write('contacto.html', simplePage('contacto', 'Contacto', `Cómo reportar un error o sugerir una calculadora en ${cfg.siteName}.`, `
+  <p>${cfg.contactEmail ? `Escríbenos a <a href="mailto:${esc(cfg.contactEmail)}">${esc(cfg.contactEmail)}</a> para reportar un error, sugerir una calculadora o hablar de publicidad.` : 'Estamos por habilitar un correo de contacto. Mientras tanto, para consultas individuales lo mejor son los canales oficiales.'}</p>
+  <p>No podemos responder consultas legales o tributarias de casos particulares. Para eso sirven la <a href="https://www.dt.gob.cl" rel="noopener">Dirección del Trabajo</a>, el <a href="https://www.sii.cl" rel="noopener">SII</a> o un abogado o contador.</p>`));
 
 write('privacidad.html', simplePage('privacidad', 'Política de privacidad', `Cómo ${cfg.siteName} trata tus datos, cookies y publicidad.`, `
   <p class="updated">Última actualización: ${hoy}</p>
